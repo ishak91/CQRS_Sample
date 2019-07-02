@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Web.CustomerFeature.GetAllCustomerQuery.GetAllCustomerResposne>
+
+@{
+    ViewData["Title"] = "CustomerController";
+}
+
+<h1>All Customers</h1>
+
+<p>
+    <a asp-action="AddCustomer">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var i = 1; }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               <label>@(i++)</label>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>         
+                @Html.ActionLink("Details", "ViewCustomer", new { id=item.Id }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
